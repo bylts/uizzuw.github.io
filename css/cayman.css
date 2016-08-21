@@ -54,7 +54,7 @@ a {
   text-align: center;
   background-color: #159957;
   background-size: cover;
-  background-image: url('..\images\header.png'); }
+  background-image: url('..\\images\\header.png'); }
   @media screen and (min-width: 64em) {
     .page-header {
       padding: 5rem 6rem; } }
