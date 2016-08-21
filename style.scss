@@ -54,6 +54,25 @@ h1 {
 }
 
 h2 {
+  font-size: 30px;
+  a {
+  color: #1e6bb8;
+  text-decoration: none; }
+  a:hover {
+    color: #1e6bb8;
+    text-decoration: none; }
+  a:active {
+    color: #1e6bb8;
+    text-decoration: none; }
+  a:visited {
+    color: #1e6bb8;
+    text-decoration: none; }
+  a:link {
+    color: #1e6bb8;
+    text-decoration: none; }
+}
+
+h2 {
   font-size: 24px;
 }
 
