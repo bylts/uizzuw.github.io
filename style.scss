@@ -30,11 +30,27 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 30px;
-  a #title {
+  a {
+  color: white;
+  text-decoration: none; }
+  a:hover {
     color: white;
-  }
+    text-decoration: none; }
+  a:active {
+    color: white;
+    text-decoration: none; }
+  a:visited {
+    color: white;
+    text-decoration: none; }
+  a:link {
+    color: white;
+    text-decoration: none; }
 }
 
 h2 {

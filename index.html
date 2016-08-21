@@ -4,12 +4,11 @@ title: {{ site.name }}
 ---
 
 <div id="home">
-  <h1>Blog Posts</h1>
   <div class="posts">
     {% for post in site.posts %}
       <article class="post">
 
-        <a class="postTitle" href="{{ site.baseurl }}{{ post.url }}"><h1>{{ post.title }}</h1></a>
+        <a href="{{ site.baseurl }}{{ post.url }}"><h1>{{ post.title }}</h1></a>
 
         <div class="entry">
           {{ post.excerpt }}
