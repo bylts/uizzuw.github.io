@@ -1,0 +1,52 @@
+---
+layout: post
+title: .NET Today - Untangling The Madness - Part 1
+---
+
+"There has never been a better time to be a .NET developer!"
+
+You've probably heard this a lot lately if you've been following any sold-for-life .NET developer. You don't even have to look at their faces, you can just *feel* the excitement in them by merely having them in your proximity. It's like the bastards have discovered the Well of Youth or something. Well-- like *we* have, since I also happen to be one of these mythical creatures we've learned to call .NET developers.
+
+But what does all of this mean? Why is this **the** time to be a .NET developer? What's so special about the current circumstances? In order to answer that question, let's first look at what .NET *was* a couple of years ago.
+
+In 2010, when someone said to you ".NET Framework", you could understand one of two things :
+  * you were an ordinary Windows user and the .NET Framework is that "thing" you need to have installed in order to have some of your programs run
+  * you were a software developer working with any high-level Windows-driven technology and the .NET Framework was the actual platform you were targeting
+  
+Actually, there's a 3rd option as well : you were a Linux / macOS (or OS X, as we, the veterans, know of it) user and you've never heard of .NET Framework, or heard of it and thought it's got something to do with The InterNET. Let's focus on the first two options, though.
+
+**.NET Framework is the main platform to target for creating Windows desktop apps.** It is the technology that Microsoft has given to the software developers that wish to create Windows applications. Before .NET was released in 2002, these developers were experiencing the period you're taught of in school as "The Dark Age". However, the story goes that every one of the 15 people in the world that were creating Windows applications at the time have rejoiced uncontrollably upon hearing of the aforementioned Messiah-as-a-Platform. It also seemed to have supported Java at first, but everyone figured out they were writing code in a completely different and **BETTER** programming language, sooner or later. Of course, in its infancy, .NET development was like a trip into the heart of the Amazonian forests. It looked colorful and exotic at first, but stuff would randomly bite you at times. Not to say that no one actually knew what was doing at the time. In order to fully get the picture I'm trying to paint here, I would strongly recommend watching [this fun old show on Channel 9](https://channel9.msdn.com/Shows/The+Code+Room "The Code Room") .
+
+![History of .NET Versions](images/net_versions.png)
+
+Hipster jokes aside, let's see why .NET was so holy grail-ish.
+
+If you've *somehow* done any C / BASIC development, you already know. But you probably don't so let me give you a glimpse at the devil. Programming in the past was hard. Software development especially. At least compared to what we can do nowadays. Development technologies were primitive, programming languages ware harsh, without any OOP elements, and tooling wasn't that great either.
+
+Then magic happenned, people got smarter, we went out of "The Dark Age", .NET and C# became a thing. And they came with A LOT great tooling and pre-written controls and utilities. Suddenly you could create GUIs by drag & dropping controls, express application logic by using OOP principles, and best of all, abstract away all the manual memory management madness of C.
+
+The .NET Framework is a collection of technologies, libraries and exposing APIs created in order to ease the development of Windows apps. It's essentially a bunch of pre-written components you can leverage in order to easily access native functionality, such as I/O, networking, registry etc in such a clean and easy way. You can interface with .NET by using one of the supported languages : C#, Visual Basic and F# being the most popular trio. You can leverage the same functionality with any of them - it's just a matter of *how* you do it, syntactically and semantically speaking. C# is a full OOP language bassed on C, Visual Basic is a full OOP language as well but it's based on BASIC, and last but not least, F# is a functional language based on OCaml. They wanted to offer support for multiple languages so they could make it easy to program against .NET no matter your technical background. If you were a functional guy - go F#! If you had no idea what output piping was or didn't have any idea you could have units of measure in code - go C# or VB depending on whether you're more comfortable with BASIC or C.
+
+At first it may seem like a hassle to support 3 languages just to make developers feel like home. What will you do when you want to introduce new features into the framework? You will have to provide support for all 3 languages! Madness! Well ... yes and no.
+
+When you compile C code, the code gets compiled into native assembly code - literal CPU instructions your processor can dig. The (oversimplified) way it works is like this : you've written a .c file. If it does not have platform-speciffic dependencies, you can compile it anywhere (this is how C-level cross-platform-ism is achieved). However, the time you introduce such dependencies in your code (for example OS specific UI elements), your code will fail to compile (and thus not run) on any other OS. This is because that OS cannot resolve the dependencies it needs. For example, think about an *Open File Dialog* - that window that pops up on Windows every time you have to open a file on your local storage. That's part of Windows itself - you cannot have that on a Mac or Linux.
+
+Things in .NET Framework are a bit different. First of all, the components inside the framework itself are dependent on Windows, thus you cannot run .NET Framework on any other OS. Secondly, none of the .NET languages compile into assembly - they compile into **Intermediate Language (IL)**
+
+IL is just what it name says - a language that all the .NET languages the developer writes in get compiled into, and which will further get compiled into assembly code. C#, F# and VB each have their own compiler to IL, so obviously the job of maintaining three languages is still there. However, [IL is still very much a high-level language](https://en.wikipedia.org/wiki/Common_Intermediate_Language#Object-oriented_concepts), and it is thus easier to translate into it than directly into assembly. You can then have another bunch of people focusing on the compilation of IL into assembly code (which is still comfortable because you only have to support Windows). But *when* and *how* is that done, though?
+
+Here's the real beauty behind the revolution of technologies such as .NET (and even Java). C code is compiled all at once, **Ahead-Of-**(run)**Time (AoT)** - when you call the compiler to do its magic on your source code, the entirety of it is then translated into assembly code. *AoT is used when compiling C#, F# and VB into IL as well*. **HOWEVER, IL is not AoT-compiled!, but Just-In-Time (JIT)-compiled by a virtual machine**. If you've ever used VMWare or VirtualBox to host virtual machines on your computer, for running other operating systems for example, it's something along the lines of that, but at a smaller level. This type of virtual machine is responsible with memory management, JIT compilation of IL and a bunch of other things. In .NET Framework, the VM responsible with this is called the **Core Language Runtime (CLR)**. The CLR manages the runtime of the IL code and calls the JIT-compiler to translate it into assembly code whenever the need to.
+
+---
+
+Let's do a recap of the highlights of what we've gone through so far :
+
+* The .NET Framework is the modern way to develop Windows applications
+* You can target the framework from many languages, the main ones being C#, F# and Visual Basic
+* C#, F# and VB are NOT compiled into assembly, but into IL, using AoT
+* IL runs on the CLR and is JIT-compiled into assembly code during runtime
+* The .NET Framework CLR runs only on Windows
+
+---
+
+Neat stuff! Thank you if you have sticked with me up until now, through this beast of a post - but this is just the beginning! What about Mono, Xamarin, .NET Core, .NET Standard and all the other buzz-words roaming around freely in the world of .NET today? You'll have to join me in the upcoming parts of this series for that!
