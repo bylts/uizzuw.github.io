@@ -18,9 +18,9 @@ html {
 }
 
 body {
-	background: $white;
+	background: #1B2836;
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  color: white;
 }
 
 .container {
@@ -36,39 +36,24 @@ a {
 
 h1 {
   font-size: 30px;
-  a {
-  color: white;
-  text-decoration: none; }
-  a:hover {
-    color: white;
-    text-decoration: none; }
-  a:active {
-    color: white;
-    text-decoration: none; }
-  a:visited {
-    color: white;
-    text-decoration: none; }
-  a:link {
-    color: white;
-    text-decoration: none; }
 }
 
 h2 {
   font-size: 30px;
   a {
-  color: #1e6bb8;
+  color: #EEE;
   text-decoration: none; }
   a:hover {
-    color: #1e6bb8;
+    color: white;
     text-decoration: none; }
   a:active {
-    color: #1e6bb8;
+    color: white;
     text-decoration: none; }
   a:visited {
-    color: #1e6bb8;
+    color: white;
     text-decoration: none; }
   a:link {
-    color: #1e6bb8;
+    color: white;
     text-decoration: none; }
 }
 
@@ -226,6 +211,10 @@ img {
 // .main
 //
 
+.main-content h1 {
+  color: white;
+}
+
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
@@ -267,6 +256,22 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
+a {
+  color: white;
+  text-decoration: none; }
+  a:hover {
+    color: white;
+    text-decoration: none; }
+  a:active {
+    color: white;
+    text-decoration: none; }
+  a:visited {
+    color: white;
+    text-decoration: none; }
+  a:link {
+    color: white;
+    text-decoration: none; }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
