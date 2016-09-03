@@ -1,7 +1,7 @@
 # Setup
 title:        underweasel.me
 tagline:      "develop - think - innovate"
-baseurl:      "www.underweasel.me"
+baseurl:      ""
 paginate:     1
 
 # About/contact
