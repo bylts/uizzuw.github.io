@@ -43,51 +43,51 @@ The last preparation note I am going to make is that we will also be using Kudu 
 
 So assuming you've got all that in place, let's go ahead and get started. First of all, we need to provision a new Azure Web App.
 
-Note that if you do not have an Azure subscription, you can try them for free for a limited trial time [here]() . They will give you a temporary Web App along with its URL that you can play with, in the form of **GUID.azurewebsites.net**. They give you a Git repository URL that you can push to in order to simulate CD, which is nice. You will also have access to Kudu via **GUID.scm.azurewebsites.net**, but **it will not have any authorization** so be careful who you share that link with during the trial. We will be using Kudu to install the Dart.Azure extension either if you're using a trial Web App or a free one provisioned from the portal, mainly because we need to bypass some imposed timeout, but more on that later.
+Note that if you do not have an Azure subscription, you can try them for free for a limited trial time [here](https://azure.microsoft.com/en-us/services/app-service/web/ "Azure Web Apps"). They will give you a temporary Web App along with its URL that you can play with, in the form of **GUID.azurewebsites.net**. They give you a Git repository URL that you can push to in order to simulate CD, which is nice. You will also have access to Kudu via **GUID.scm.azurewebsites.net**, but **it will not have any authorization** so be careful who you share that link with during the trial. We will be using Kudu to install the Dart.Azure extension either if you're using a trial Web App or a free one provisioned from the portal, mainly because we need to bypass some imposed timeout, but more on that later.
 
-![try azure web apps](../images/dart_azure_1/dart_azure_6.png "Provisioning a new Web App in Azure")
+![try azure web apps](/images/dart_azure_1/dart_azure_6.png "Provisioning a new Web App in Azure")
 
 If, however, you are lucky enough to have an Azure subscription, this process will be way simpler :
 
-![new azure web app](../images/dart_azure_1/dart_azure_1.png "Provisioning a new Web App in Azure")
+![new azure web app](/images/dart_azure_1/dart_azure_1.png "Provisioning a new Web App in Azure")
 
 Give it a name of your liking and provide it with a resource group and service plan. We will not be using Analytics, so untick that. I would also like it to get pinned to the dashboard. Click "Create" and wait for Azure to provision everything for you.
 
-![azure web app settings](../images/dart_azure_1/dart_azure_2.png "Azure Web App Settings")
+![azure web app settings](/images/dart_azure_1/dart_azure_2.png "Azure Web App Settings")
 
 After the site is up and running, the first thing we need to do is **setup Continuous Deployment**. Right now it is required to do this **before** you install the extension, because Kudu will overwrite the custom deployment script injected by the extension if you setup CD afterwards. This will get fixed in a future version and I will make sure to update this post when that has been achieved.
 
 Make sure you have set up your repository information correctly. I will be using my *dart_notd* repository, as I said, and will be deploying from the master branch.
 
-![setting up continuous deployment](../images/dart_azure_1/dart_azure_3.png "Setting up CD for the Web App")
+![setting up continuous deployment](/images/dart_azure_1/dart_azure_3.png "Setting up CD for the Web App")
 
 After you click OK, Kudu will go ahead and pull the entire selected branch of your repository. It will also push everything in it to the website's **wwwroot**. That is obviously not what we want, and it is happening because the default Kudu deployment script is being ran. Once installed, Dart.Azure will overwrite that with a proper Dart-speciffic deployment script I wrote. For now though, let it do its thing and make sure the source is being pulled successfully.
 
-![successful repository sync](../images/dart_azure_1/dart_azure_4.png "Successful Kudu repository sync")
+![successful repository sync](/images/dart_azure_1/dart_azure_4.png "Successful Kudu repository sync")
 
 If all went well until now, don't feel too happy. Now's when the hacky stuff starts happening. We now need to install the Dart.Azure extension, which will in turn install the Dart SDK and setup proper solution deployment, environment variables, web server configuration and a couple of other things. If you've gone through the list of options on the left in your Web App blade, you might have come across an option called "Extensions" and would assume we will be using that in order to install Dart.Azure. We will *not* be using that, because **Azure has a timeout of one minute in place for the installation of any extension**. Dart.Azure takes a bit longer than that - it first needs to download the SDK and then to extract it. If you go ahead and try installing it using this method, you will get the following error after exeactly 60 seconds :
 
-![timeout error](../images/dart_azure_1/dart_azure_8.png "Azure Web App extension WebApiClient timeout error")
+![timeout error](/images/dart_azure_1/dart_azure_8.png "Azure Web App extension WebApiClient timeout error")
 
 After going through the depths of The Internet in search of a decent solution for this, I have found out that you can set the `SCM_COMMAND_IDLE_TIME` environment variable to go around this. **However, it seems this only works when you install extensions from the Kudu extension gallery and not the Azure portal too!**. So keep that in mind and go define that environment variable in your Web App settings. I have read the value is supposed to be in seconds, but I've set it to something that would work in milliseconds as well, just to be overly-superstitious about it.
 
-![setting the kudu extension install timeout](../images/dart_azure_1/dart_azure_11.png "Setting the Kudu extension install timeout")
+![setting the kudu extension install timeout](/images/dart_azure_1/dart_azure_11.png "Setting the Kudu extension install timeout")
 
 Now we're finally ready to install Dart.Azure! Open *Advanced Tools* from the options list on the left (or just search for *kudu* in the search box at the top), go to the *Site Extensions* tab, then to *Gallery* and search for *dart* :
 
-![searching for the Dart.Azure extension](../images/dart_azure_1/dart_azure_5.png "Searching for the Dart.Azure extension")
+![searching for the Dart.Azure extension](/images/dart_azure_1/dart_azure_5.png "Searching for the Dart.Azure extension")
 
 Click on the + icon to install it and wait for about two minutes. After the install finished, you will be prompted to restart the website - do that. This is required for the environment variables needed by Dart.Azure to be set. You can also restart it from the app's blade if you would prefer that :
 
-![restart azure web app](../images/dart_azure_1/dart_azure_9.png "Restarting the Azure Web App")
+![restart azure web app](/images/dart_azure_1/dart_azure_9.png "Restarting the Azure Web App")
 
 One more step and we're done! Go to *Deployment options* and re-sync, so that the new deployment script kicks in and does the proper deployment. Don't worry, it's written in such a way that it cleans up after the initial Kudu deployment mess. If everything goes well you should see the green check mark on the latest deployment once again. If not, click on it and look in the deployment task log. It should be verbose enough to give you an idea about what might have happenned.
 
-![resync azure web app](../images/dart_azure_1/dart_azure_10.png "Resyncing the Azure Web App")
+![resync azure web app](images/dart_azure_1/dart_azure_10.png "Resyncing the Azure Web App")
 
 The moment of truth! Go to your website. If you have used *dart_notd* as well, you should see something like this :
 
-![dart_notd running on azure](../images/dart_azure_1/dart_azure_7.png "Dart Note of the Day running on Azure")
+![dart_notd running on azure](/images/dart_azure_1/dart_azure_7.png "Dart Note of the Day running on Azure")
 
 **THat's it!** you are now running Dart on Microsoft Azure! Isn't that insane!?
 
