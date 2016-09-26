@@ -9,7 +9,7 @@ Luckily, I am not the only one feeling the need for a change! And funny enough, 
 
 If I haven't completely thrown you off with the last two paragraphs, thank you for being such a patient, reasonable human being. From now on, I will refrain from such affirmations, and instead of talkong crap about JS, I will focus on its new, way more modern alternative : **Dart**.
 
-## What is Dart and why have I done this?
+### What is Dart and why have I done this?
 
 [Dart](https://www.dartlang.org/ "Official Dart site") is a programming language mainly developed by Google, whose main goal is to be an alternative to JS. It is not just a programming language, but a completely new technology - it has got its own runtime and it runs on Windows, macOS *and* Linux! It can be used in place of JS in websites for DOM manipulation, AJAX and any other JS-like task for that matter. The gotcha here is that no mainstream browser supports Dart. Not Firefox, not Chrome, not Safari and deffinitely not Edge or IE.
 
@@ -27,7 +27,7 @@ Developing against a new runtime changes the rules. It may not look like it at f
 
 I will not waste any more time preaching the awesomeness of Dart - this is not the scope of this post. If you want to go deeper into Dart, I recommend taking a look at some [tutorials](https://www.dartlang.org/tutorials "Dart Tutorials"). You can find lots of them on The Internet, from good ol' DOM manipulation to heavy native scripting. Now, however, let's come back to the main topic.
 
-## Running Dart in production today is a pain
+### Running Dart in production today is a pain
 
 It truly is. There are not many viable hosting solutions out there - Heroku and Firebase are the most common, but I find them very limitating, at least from a free standpoint. That is one aspect I hate about cloud computing today - it is so bloody expensive just to play around with it for non-production means!! 
 
@@ -35,7 +35,7 @@ Luckily, Microsoft have quite an accessible solution to this in their Azure cata
 
 Creating a Dart extension for Azure Web Apps came as a natural challenge for me the minute I found out there is already a [Jekyll extension](https://github.com/SyntaxC4-MSFT/JekyllExtension "JekyllExtension by SyntaxC4") in place. For those that do not know what Jekyll is, it is a framework written in Ruby for serving static websites written in [Markdown](https://en.wikipedia.org/wiki/Markdown) - which [this very blog is also based on](https://github.com/UizzUW/uizzuw.github.io). So if someone managed to get the madness that is Ruby to run on Azure Web Apps, porting literally anything else should be a breeze, right? Right?
 
-## Enter Dart.Azure
+### Enter Dart.Azure
 
 After a couple of evenings (more than I had planned initially), [Dart.Azure](https://github.com/UizzUW/Dart.Azure "Dart.Azure on Github") finally came to be. I have looked into ways to make it as seamless and easy to use as possible, and I think I've finally hit a decent point in its development so that I can let it roam free into the [extension gallery](https://www.siteextensions.net/packages/Dart.Azure/ "Dart.Azure on SiteExtensions") and start asking for feedback. Let's try to setup an Azure Web App running a Dart solution from scratch. There are a few gotchas here and there, but I will point them all along the way. For this demo I will be using my [Dart number of the day](https://github.com/UizzUW/dart_notd "dart_notd on Github") sample solution - you can fork it and follow along if you'd like to. You also need to have an Azure subscription capable of creating at least a free tier Web App.
 
