@@ -90,7 +90,7 @@ img {
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: #AFA;
 }
 
 // Specify the color of the selection
@@ -192,6 +192,7 @@ img {
 }
 
 .posts > .post {
+  padding-top: 2em;
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
 }
