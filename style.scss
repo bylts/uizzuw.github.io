@@ -30,10 +30,6 @@ body {
   width: 100%;
 }
 
-a {
-  text-decoration: none;
-}
-
 h1 {
   font-size: 30px;
 }
@@ -238,19 +234,19 @@ footer {
 }
 
 .project-name a {
-  color: #00BFFF;
+  color: white;
   text-decoration: none; }
 .project-name a:hover {
-    color: #00BFFF;
+    color: white;
     text-decoration: none; }
 .project-name  a:active {
-    color: #00BFFF;
+    color: white;
     text-decoration: none; }
 .project-name  a:visited {
-    color: #00BFFF;
+    color: white;
     text-decoration: none; }
 .project-name   a:link {
-    color: #00BFFF;
+    color: white;
     text-decoration: none; }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
