@@ -10,20 +10,15 @@ body {
   color: #606c71; }
 
 .main-content a {
-  color: #00BFFF;
-  text-decoration: none; }
+  color: #00BFFF; }
 .main-content a:hover {
-    color: #00BFFF;
-    text-decoration: none; }
+    color: #00BFFF; }
  .main-content  a:active {
-    color: #00BFFF;
-    text-decoration: none; }
+    color: #00BFFF; }
  .main-content  a:visited {
-    color: #00BFFF;
-    text-decoration: none; }
+    color: #00BFFF; }
 .main-content   a:link {
-    color: #00BFFF;
-    text-decoration: none; }
+    color: #00BFFF; }
 
 .btn {
   display: inline-block;
