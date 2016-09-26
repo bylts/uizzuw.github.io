@@ -133,7 +133,7 @@ body {
     padding: 2px 4px;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 0.9rem;
-    color: #567482;
+    color: #DDD;
     background-color: #071422;
     border-radius: 0.3rem; }
   .main-content pre {
@@ -150,7 +150,7 @@ body {
       padding: 0;
       margin: 0;
       font-size: 0.9rem;
-      color: #567482;
+      color: #DDD;
       word-break: normal;
       white-space: pre;
       background: transparent;
@@ -189,7 +189,7 @@ body {
   .main-content blockquote {
     padding: 0 1rem;
     margin-left: 0;
-    color: #819198;
+    color: #DDD;
     border-left: 0.3rem solid #dce6f0; }
     .main-content blockquote > :first-child {
       margin-top: 0; }
