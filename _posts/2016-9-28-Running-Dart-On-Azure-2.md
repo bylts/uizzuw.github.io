@@ -48,7 +48,7 @@ Using these two variables, you can configure the extension to only deploy a clie
 
 * If the deployment script won't find any client or server projects at the defined (or default) locations, the script will carry on independently without failing.
 * When deploying to production, Dart.Azure will copy **the entire repository** to the server location, in order to also keep any library dependencies you may have in your repository - I may optimize this in the future.
-* Dart.Azure will run `pub build` on the client project and **will copy all contents of `DART_CLIENT_SOURCE_PATH\build` to `wwwroot`
+* Dart.Azure will run `pub build` on the client project and **will copy all contents of `DART_CLIENT_SOURCE_PATH\build` to `wwwroot`**
 
 Right now the extension is quite new and untested towards real-world solutions. It may thus feel a little bit hackish when setting up. This is why I am highly interested in everyone's feedback regarding it. It *can* be improved, but I am curious to know in which ways it would be the most useful - please let me know in the comments below!
 
