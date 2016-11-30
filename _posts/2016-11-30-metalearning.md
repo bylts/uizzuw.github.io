@@ -19,7 +19,7 @@ I had a period when I was asking myself that, seeing how everyone around me was 
 
 **Metalearning** refers to the process one level above from simple learning - specifically *learning about learning*. According to Donald B. Maudsley, metalearning is *"the process by which learners become aware of and increasingly in control of habits of perception, inquiry, learning, and growth that they have internalized"*.
 
-<img src="/images/metalearning.png"></img>
+<img src="/images/metalearning.png" width="300"></img>
 
 In simpler terms, metalearnings means understanding how you learn best, in what way you prefer the information to be given to you (in terms of both transfer medium (paper, video, live dialogue etc) and structure (lots of small, organised bits vs one well-defined chunk etc)), when and where you are the most learning-oriented mindset, and all other behavioural and cognitive factors of the kind. Understanding your learning process is key to refining it.
 
